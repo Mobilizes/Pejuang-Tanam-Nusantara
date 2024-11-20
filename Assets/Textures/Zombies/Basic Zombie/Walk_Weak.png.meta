@@ -87,7 +87,7 @@ TextureImporter:
   spriteMeshType: 1
   alignment: 0
   spritePivot: {x: 0.5, y: 0.5}
-  spritePixelsToUnits: 32
+  spritePixelsToUnits: 160
   spriteBorder: {x: 0, y: 0, z: 0, w: 0}
   spriteGenerateFallbackPhysicsShape: 1
   alphaUsage: 1
@@ -149,155 +149,155 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: Walking_Weak_0
+      name: Walk_Weak_0
       rect:
         serializedVersion: 2
-        x: 7
+        x: 6
         y: 0
-        width: 29
-        height: 46
+        width: 30
+        height: 54
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
       physicsShape: []
-      tessellationDetail: -1
+      tessellationDetail: 0
       bones: []
-      spriteID: 26aabaeda786c1610800000000000000
-      internalID: 1593263245113404002
+      spriteID: 952645099b6f7a94589435fa4bc45f52
+      internalID: -1850725055
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Walking_Weak_2
+      name: Walk_Weak_1
       rect:
         serializedVersion: 2
-        x: 57
+        x: 51
         y: 0
-        width: 23
-        height: 48
+        width: 30
+        height: 54
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
       physicsShape: []
-      tessellationDetail: -1
+      tessellationDetail: 0
       bones: []
-      spriteID: 6aea19798f78a4060800000000000000
-      internalID: 6938507677682216614
+      spriteID: 40dcdab8940e81d48810c368adef4592
+      internalID: -1852391353
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Walking_Weak_4
+      name: Walk_Weak_2
       rect:
         serializedVersion: 2
-        x: 101
+        x: 96
         y: 0
-        width: 24
-        height: 47
+        width: 30
+        height: 54
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
       physicsShape: []
-      tessellationDetail: -1
+      tessellationDetail: 0
       bones: []
-      spriteID: 6a2f03e2f801245f0800000000000000
-      internalID: -774037978812976474
+      spriteID: 7333f12f414501c4c89804c08d21e1f6
+      internalID: 1909637387
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Walking_Weak_6
+      name: Walk_Weak_3
       rect:
         serializedVersion: 2
-        x: 142
+        x: 141
         y: 0
-        width: 28
-        height: 46
+        width: 30
+        height: 54
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
       physicsShape: []
-      tessellationDetail: -1
+      tessellationDetail: 0
       bones: []
-      spriteID: b2cde378e20b12bb0800000000000000
-      internalID: -4962491600501547989
+      spriteID: d08a4b3e4e38c0441a08372faadef52a
+      internalID: 991891970
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Walking_Weak_8
+      name: Walk_Weak_4
       rect:
         serializedVersion: 2
-        x: 190
+        x: 186
         y: 0
-        width: 23
-        height: 49
+        width: 30
+        height: 54
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
       physicsShape: []
-      tessellationDetail: -1
+      tessellationDetail: 0
       bones: []
-      spriteID: 6acf522a68d94b6e0800000000000000
-      internalID: -1822658747606631258
+      spriteID: ef18cb5f5e746e44b9fb881c954567e9
+      internalID: -707119275
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Walking_Weak_10
+      name: Walk_Weak_5
       rect:
         serializedVersion: 2
-        x: 230
+        x: 231
         y: 0
-        width: 32
-        height: 47
+        width: 30
+        height: 54
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
       physicsShape: []
-      tessellationDetail: -1
+      tessellationDetail: 0
       bones: []
-      spriteID: f5a26968fa252ad10800000000000000
-      internalID: 2135360087157779039
+      spriteID: bdfe4df28bf8e794eb915f8daf18c8cb
+      internalID: -20035461
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Walking_Weak_12
+      name: Walk_Weak_6
       rect:
         serializedVersion: 2
         x: 276
         y: 0
-        width: 31
-        height: 46
+        width: 30
+        height: 54
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
       physicsShape: []
-      tessellationDetail: -1
+      tessellationDetail: 0
       bones: []
-      spriteID: 8e14f34bc48c28660800000000000000
-      internalID: 7386686570608148968
+      spriteID: bf950fe6892139e4882e23d60a3fb743
+      internalID: 854383095
       vertices: []
       indices: 
       edges: []
@@ -316,19 +316,13 @@ TextureImporter:
     spriteCustomMetadata:
       entries: []
     nameFileIdTable:
-      Walking_Weak_0: 1593263245113404002
-      Walking_Weak_1: -501090656639974673
-      Walking_Weak_10: 2135360087157779039
-      Walking_Weak_11: -1411996605775760751
-      Walking_Weak_12: 7386686570608148968
-      Walking_Weak_2: 6938507677682216614
-      Walking_Weak_3: 5076431081471422788
-      Walking_Weak_4: -774037978812976474
-      Walking_Weak_5: -407033861652701141
-      Walking_Weak_6: -4962491600501547989
-      Walking_Weak_7: -7310633933950815554
-      Walking_Weak_8: -1822658747606631258
-      Walking_Weak_9: 2896963790673265141
+      Walk_Weak_0: -1850725055
+      Walk_Weak_1: -1852391353
+      Walk_Weak_2: 1909637387
+      Walk_Weak_3: 991891970
+      Walk_Weak_4: -707119275
+      Walk_Weak_5: -20035461
+      Walk_Weak_6: 854383095
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
