@@ -4,7 +4,14 @@ using UnityEngine;
 [System.Serializable]
 public abstract class GameEntity : MonoBehaviour
 {
-    private int _hp = 100;
+    private int _maxHp;
+    private int _hp;
+
+    public int MaxHp
+    {
+        get => _maxHp;
+        protected set => _maxHp = math.max(value, 0);
+    }
 
     public int Hp
     {
@@ -12,7 +19,12 @@ public abstract class GameEntity : MonoBehaviour
         protected set => _hp = math.max(_hp, 0);
     }
 
-    public void TakeDamage(int damage)
+    protected GameEntity()
+    {
+        Hp = MaxHp;
+    }
+
+    public virtual void TakeDamage(int damage)
     {
         if (damage < 0)
         {
