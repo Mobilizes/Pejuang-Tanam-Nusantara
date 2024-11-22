@@ -5,7 +5,7 @@ namespace Assets.Scripts.Zombie
 {
     public class Basic_Zombie : Zombie
     {
-        protected Basic_Zombie()
+        protected Basic_Zombie() : base()
         {
             MaxHp = 100;
 

@@ -5,9 +5,9 @@ namespace Assets.Scripts.Zombie
 {
     public abstract class Zombie : GameEntity
     {
-        protected Animator _animator;
         protected float _speed = 1;
         private float _timer;
+        private GameEntity _target;
 
         protected float Interval { get; set; } = 1;
         protected float Speed
@@ -24,7 +24,7 @@ namespace Assets.Scripts.Zombie
         protected bool Attacking { get; set; } = false;
         protected int Atk { get; set; } = 20;
 
-        protected Zombie()
+        protected Zombie() : base()
         {
             _timer = Interval;
         }
@@ -33,27 +33,17 @@ namespace Assets.Scripts.Zombie
         {
             if (other.gameObject.CompareTag("Plant"))
             {
-                Debug.Log($"Zombie collided with a plant at lane " + GetLane());
-
+                _target = other.gameObject.GetComponent<GameEntity>();
                 Attacking = true;
 
-                //GameEntity plant = other.gameObject.GetComponent<GameEntity>();
-                //if (plant is IAttackable)
-                //{
-                //    _attacking = true;
-                //    Attack(plant);
-                //}
+                Debug.Log($"Zombie collided with a plant at lane " + GetLane());
             }
         }
 
         protected virtual void OnCollisionExit2D(Collision2D other)
         {
+            _target = null;
             Attacking = false;
-        }
-
-        protected virtual void Start()
-        {
-            _animator = GetComponent<Animator>();
         }
 
         protected virtual void Update()
@@ -81,8 +71,6 @@ namespace Assets.Scripts.Zombie
         protected override void Die()
         {
             Debug.Log("Zombie died");
-
-
 
             base.Die();
         }
