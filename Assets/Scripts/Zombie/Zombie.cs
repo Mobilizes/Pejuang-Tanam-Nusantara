@@ -5,7 +5,7 @@ namespace Assets.Scripts.Zombie
 {
     public abstract class Zombie : GameEntity
     {
-        protected Animator _animator;
+        protected Animator animator;
         protected float _speed = 1;
         private float _timer;
 
@@ -53,7 +53,7 @@ namespace Assets.Scripts.Zombie
 
         protected virtual void Start()
         {
-            _animator = GetComponent<Animator>();
+            animator = GetComponent<Animator>();
         }
 
         protected virtual void Update()
@@ -65,8 +65,10 @@ namespace Assets.Scripts.Zombie
                 Move();
             }
 
-            _animator.SetBool("Attacking", Attacking);
-            if (Hp < MaxHp / 2) _animator.SetBool("Weak", true);
+            animator.SetBool("Attacking", Attacking);
+            if (Hp < MaxHp / 2) animator.SetBool("Weak", true);
+
+            if (Hp == 0) { Die(); }
         }
 
         protected void Attack(GameEntity entity)
@@ -82,9 +84,12 @@ namespace Assets.Scripts.Zombie
         {
             Debug.Log("Zombie died");
 
+            animator.SetBool("Dead", true);
 
-
-            base.Die();
+            if (animator.GetCurrentAnimatorStateInfo(0).normalizedTime > 5)
+            {
+                base.Die();
+            }
         }
 
         protected void Move()
