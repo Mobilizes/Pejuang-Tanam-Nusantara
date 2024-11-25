@@ -4,6 +4,7 @@ using UnityEngine;
 [System.Serializable]
 public abstract class GameEntity : MonoBehaviour
 {
+    protected Animator _animator;
     private int _maxHp;
     private int _hp;
 
@@ -16,11 +17,13 @@ public abstract class GameEntity : MonoBehaviour
     public int Hp
     {
         get => _hp;
-        protected set => _hp = math.max(_hp, 0);
+        protected set => _hp = math.max(value, 0);
     }
 
-    protected GameEntity()
+    protected virtual void Start()
     {
+        _animator = GetComponent<Animator>();
+
         Hp = MaxHp;
     }
 
