@@ -48,7 +48,18 @@ public abstract class GameEntity : MonoBehaviour
 
     protected int GetLane()
     {
-        string rowName = transform.parent.parent.name;
-        return int.Parse(rowName[(rowName.LastIndexOf('w') + 1)..]);
+        Transform currentParent = transform.parent != null ? transform.parent : throw new System.Exception("GameEntity node must be a child node of a row container node!");
+
+        while (currentParent.parent != null)
+        {
+            if (currentParent.name.StartsWith("Row"))
+            {
+                return int.Parse(currentParent.name[3..]);
+            }
+
+            currentParent = currentParent.parent;
+        }
+
+        throw new System.Exception("GameEntity node must be a child node of a row container!");
     }
 }
