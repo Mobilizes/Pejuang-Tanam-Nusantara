@@ -46,6 +46,15 @@ namespace Assets.Scripts.Zombie
             Attacking = false;
         }
 
+<<<<<<< Updated upstream
+=======
+        protected virtual void Start()
+        {
+            Hp = MaxHp;
+            animator = GetComponent<Animator>();
+        }
+
+>>>>>>> Stashed changes
         protected virtual void Update()
         {
             _timer += Time.deltaTime;
