@@ -5,6 +5,8 @@ namespace Assets.Scripts.Zombie
 {
     public class Zombie : GameEntity
     {
+        private const float SPEED_MULTIPLIER = 2.0f;
+
         protected Animator animator;
         protected GameObject target;
 
@@ -111,7 +113,8 @@ namespace Assets.Scripts.Zombie
 
         protected void Move()
         {
-            transform.position += Speed * Time.deltaTime * 0.2f * transform.localScale.x * Vector3.left;
+            transform.position += SPEED_MULTIPLIER * Speed *
+                                  Time.deltaTime * Vector3.left;
         }
     }
 }
