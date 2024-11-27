@@ -3,72 +3,85 @@ using UnityEngine;
 
 namespace Assets.Scripts.Zombie
 {
-    public abstract class Zombie : GameEntity
+    public class Zombie : GameEntity
     {
         protected Animator animator;
+        protected GameObject target;
+
         protected float _speed = 1;
+        private int _atk = 20;
+        private float _interval = 1;
         private float _timer;
 
-        protected float Interval { get; set; } = 1;
+        protected float Interval
+        {
+            get => _interval;
+            set => _interval = math.max(value, 0);
+        }
         protected float Speed
         {
             get => _speed;
             set => _speed = math.max(value, 0);
         }
-        private float Timer
+        protected float Timer
         {
             get => _timer;
-            set => _timer = math.min(value, Interval);
+            private set => _timer = math.clamp(value, 0, Interval);
         }
 
         protected bool Attacking { get; set; } = false;
-        protected int Atk { get; set; } = 20;
-
-        protected Zombie()
+        protected int Atk
         {
-            _timer = Interval;
+            get => _atk;
+            set => _atk = math.max(value, 0);
         }
 
-        protected virtual void OnCollisionEnter2D(Collision2D other)
+        protected Zombie() : base()
+        {
+            Timer = Interval;
+        }
+
+        protected void OnCollisionEnter2D(Collision2D other)
         {
             if (other.gameObject.CompareTag("Plant"))
             {
                 Debug.Log($"Zombie collided with a plant at lane " + GetLane());
 
                 Attacking = true;
-
-                //GameEntity plant = other.gameObject.GetComponent<GameEntity>();
-                //if (plant is IAttackable)
-                //{
-                //    _attacking = true;
-                //    Attack(plant);
-                //}
+                target = other.gameObject;
             }
         }
 
-        protected virtual void OnCollisionExit2D(Collision2D other)
+        protected void OnCollisionExit2D(Collision2D _)
         {
             Attacking = false;
         }
 
-        protected virtual void Start()
+        protected void Start()
         {
             animator = GetComponent<Animator>();
         }
 
-        protected virtual void Update()
+        protected void Update()
         {
-            _timer += Time.deltaTime;
+            animator.SetBool("Attacking", Attacking);
+            animator.SetBool("Weak", Hp < MaxHp / 2);
+            if (Hp == 0)
+            {
+                Die();
+                return;
+            }
 
-            if (!Attacking)
+            if (Attacking)
+            {
+                Attack(target.GetComponent<GameEntity>());
+            }
+            else
             {
                 Move();
             }
 
-            animator.SetBool("Attacking", Attacking);
-            if (Hp < MaxHp / 2) animator.SetBool("Weak", true);
-
-            if (Hp == 0) { Die(); }
+            Timer += Time.deltaTime;
         }
 
         protected void Attack(GameEntity entity)
@@ -80,10 +93,8 @@ namespace Assets.Scripts.Zombie
             }
         }
 
-        protected override void Die()
+        protected new void Die()
         {
-            Debug.Log("Zombie died");
-
             animator.SetBool("Dead", true);
 
             if (animator.GetCurrentAnimatorStateInfo(0).normalizedTime > 5)
@@ -94,7 +105,7 @@ namespace Assets.Scripts.Zombie
 
         protected void Move()
         {
-            transform.position += Speed * Time.deltaTime * 0.2f * Vector3.left;
+            transform.position += Speed * Time.deltaTime * 0.2f * transform.localScale.x * Vector3.left;
         }
     }
 }
