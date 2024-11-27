@@ -12,10 +12,10 @@ public class ZombieSpawner : MonoBehaviour
     {
         foreach (Spawning_Zombies zombie in zombies)
         {
-            if (zombie.isSpawnned == false && zombie.SpawnTime <= Time.time)
+            if (zombie.isSpawned == false && zombie.SpawnTime <= Time.time)
             {
                 GameObject zombieInstance = Instantiate(zombiePrefabs[(int)zombie.zombieType], transform.GetChild(zombie.Spawner).transform);
-                zombie.isSpawnned = true;
+                zombie.isSpawned = true;
 
             }
         }

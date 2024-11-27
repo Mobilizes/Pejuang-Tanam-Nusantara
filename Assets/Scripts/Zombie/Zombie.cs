@@ -5,7 +5,7 @@ namespace Assets.Scripts.Zombie
 {
     public class Zombie : GameEntity
     {
-        private const float SPEED_MULTIPLIER = 2.0f;
+        private const float SPEED_MULTIPLIER = 5.0f;
 
         protected Animator animator;
         protected GameObject target;
