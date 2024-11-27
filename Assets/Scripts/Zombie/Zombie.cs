@@ -52,9 +52,15 @@ namespace Assets.Scripts.Zombie
             }
         }
 
-        protected void OnCollisionExit2D(Collision2D _)
+        protected void OnCollisionExit2D(Collision2D other)
         {
-            Attacking = false;
+            if (other.gameObject == target || target == null || target.GetComponent<GameEntity>().IsDead())
+            {
+                Debug.Log($"Zombie stopped colliding with a plant at lane " + GetLane());
+
+                Attacking = false;
+                target = null;
+            }
         }
 
         protected void Start()

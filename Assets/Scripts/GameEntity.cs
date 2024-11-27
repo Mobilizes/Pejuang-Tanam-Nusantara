@@ -42,6 +42,11 @@ public class GameEntity : MonoBehaviour
         }
     }
 
+    public bool IsDead()
+    {
+        return Hp == 0;
+    }
+
     protected void Die()
     {
         Destroy(gameObject);
