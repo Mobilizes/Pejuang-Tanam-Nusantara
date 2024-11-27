@@ -105,7 +105,7 @@ namespace Assets.Scripts.Zombie
 
             if (animator.GetCurrentAnimatorStateInfo(0).normalizedTime > 5)
             {
-                Destroy(gameObject);
+                base.Die();
             }
         }
 

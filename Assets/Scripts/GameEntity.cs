@@ -38,13 +38,18 @@ public class GameEntity : MonoBehaviour
         Hp -= damage;
         if (Hp == 0)
         {
-            Destroy(gameObject);
+            Die();
         }
     }
 
     public bool IsDead()
     {
         return Hp == 0;
+    }
+
+    protected void Die()
+    {
+        Destroy(gameObject);
     }
 
     protected int GetLane()
