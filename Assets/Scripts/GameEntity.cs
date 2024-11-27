@@ -2,7 +2,7 @@ using Unity.Mathematics;
 using UnityEngine;
 
 [System.Serializable]
-public abstract class GameEntity : MonoBehaviour
+public class GameEntity : MonoBehaviour
 {
     private int _maxHp;
     private int _hp;
@@ -16,15 +16,19 @@ public abstract class GameEntity : MonoBehaviour
     public int Hp
     {
         get => _hp;
-        protected set => _hp = math.max(_hp, 0);
+        protected set => _hp = math.clamp(value, 0, MaxHp);
     }
 
     protected GameEntity()
     {
+    }
+
+    protected void Awake()
+    {
         Hp = MaxHp;
     }
 
-    public virtual void TakeDamage(int damage)
+    public void TakeDamage(int damage)
     {
         if (damage < 0)
         {
@@ -38,7 +42,12 @@ public abstract class GameEntity : MonoBehaviour
         }
     }
 
-    protected virtual void Die()
+    public bool IsDead()
+    {
+        return Hp == 0;
+    }
+
+    protected void Die()
     {
         Destroy(gameObject);
     }
