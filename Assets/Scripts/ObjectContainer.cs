@@ -7,22 +7,32 @@ public class ObjectContainer : MonoBehaviour
     public bool isFull;
     public GameManager gameManager;
     public Image backgroundImage;
-    public void Start()
+    public SpawnPoint spawnPoint;
+
+    private void Start()
     {
         gameManager = GameManager.instance;
     }
-    public void OnTriggerStay2D(Collider2D collision)
-    { 
-        if (gameManager.draggingObject != null && isFull == false && gameManager.currentContainer == null)
+
+    private void OnTriggerStay2D(Collider2D collision)
+    {
+        if (collision.CompareTag("Zombie")) return; 
+
+        if (gameManager.draggingObject != null && !isFull && gameManager.currentContainer == null)
         {
             gameManager.currentContainer = this.gameObject;
             backgroundImage.enabled = true;
         }
     }
-    public void OnTriggerExit2D(Collider2D collision)
+
+    private void OnTriggerExit2D(Collider2D collision)
     {
-        if(gameManager.currentContainer == this.gameObject) 
+        if (collision.CompareTag("Zombie")) return; 
+
+        if (gameManager.currentContainer == this.gameObject)
+        {
             gameManager.currentContainer = null;
-        backgroundImage.enabled = false;
+            backgroundImage.enabled = false;
+        }
     }
 }

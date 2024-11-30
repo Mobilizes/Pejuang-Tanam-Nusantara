@@ -17,9 +17,9 @@ TagManager:
   - 
   - DraggingPlant
   - Container
-  - 
-  - 
-  - 
+  - Object
+  - Zombie
+  - Bullet
   - 
   - 
   - 

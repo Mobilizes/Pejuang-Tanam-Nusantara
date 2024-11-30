@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 3728548938561399020}
   - component: {fileID: -6378510276666530574}
   - component: {fileID: 6710282239483345194}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Peashooter
   m_TagString: Plant
   m_Icon: {fileID: 0}

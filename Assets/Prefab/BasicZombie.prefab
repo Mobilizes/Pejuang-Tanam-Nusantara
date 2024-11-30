@@ -11,10 +11,10 @@ GameObject:
   - component: {fileID: 3123139845253502042}
   - component: {fileID: 8510243581011929676}
   - component: {fileID: 683043148039519150}
-  - component: {fileID: 3277267297995036915}
   - component: {fileID: 7511079063632371741}
   - component: {fileID: -5162712951307077371}
-  m_Layer: 0
+  - component: {fileID: 481889756652858678}
+  m_Layer: 11
   m_Name: BasicZombie
   m_TagString: Zombie
   m_Icon: {fileID: 0}
@@ -117,18 +117,6 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
---- !u!114 &3277267297995036915
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1113420446729341085}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0b074463e2bb04648b7ed4983fbba344, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!50 &7511079063632371741
 Rigidbody2D:
   serializedVersion: 5
@@ -202,3 +190,15 @@ BoxCollider2D:
   m_AutoTiling: 0
   m_Size: {x: 0.12095867, y: 0.19741285}
   m_EdgeRadius: 0
+--- !u!114 &481889756652858678
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1113420446729341085}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0b074463e2bb04648b7ed4983fbba344, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
