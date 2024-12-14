@@ -1,8 +1,10 @@
 using NUnit.Framework;
 using UnityEngine;
 using System.Collections.Generic;
+using System;
 public class PlantController : MonoBehaviour
 {
+    public int Health;
     public GameObject bullet;
     public List<GameObject> zombies;
     public GameObject toAttack;
@@ -23,14 +25,26 @@ public class PlantController : MonoBehaviour
             isAttacking = false;
         }
 
-        if (toAttack != null)
+        if (isAttacking)
         {
+            
             if (attackTime <= Time.time)
             {
-                Instantiate(bullet, transform);
+                GameObject bulletInstance = Instantiate(bullet, transform);
+                bulletInstance.GetComponent<Bullet>().DamageValue = DamageValue;
                 attackTime = Time.time + attackCooldown;
             }
         }
     }
-
+    public void ReceiveDamage(int damage)
+    {
+        if (Health - damage <= 0)
+        {
+            Destroy(this.gameObject);
+        }
+        else
+        {
+            Health -= damage;
+        }
+    }
 }
