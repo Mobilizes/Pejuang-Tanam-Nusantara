@@ -118,5 +118,10 @@ namespace Assets.Scripts.Zombie
             transform.position += SPEED_MULTIPLIER * Speed *
                                   Time.deltaTime * Vector3.left;
         }
+
+        protected new int GetLane()
+        {
+            return transform.parent.GetComponent<SpawnPoint>().row;
+        }
     }
 }

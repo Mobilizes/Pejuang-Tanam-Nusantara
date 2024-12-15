@@ -4,6 +4,7 @@ using System.Collections.Generic;
 
 public class AttackerPlant : Plant
 {
+    public Animator animator;
     public GameObject bullet;
     public List<GameObject> zombies;
 
@@ -45,12 +46,15 @@ public class AttackerPlant : Plant
         IsAttacking = false;
     }
 
-    public void Awake()
+    public void Start()
     {
+        animator = GetComponent<Animator>();
     }
 
     public void Update()
     {
+        animator.SetBool("Attacking", IsAttacking);
+
         if (IsAZombieInLane() && IsAttacking == false)
         {
             IsAttacking = true;
