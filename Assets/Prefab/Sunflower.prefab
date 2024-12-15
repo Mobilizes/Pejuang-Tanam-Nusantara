@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 3170073223577297314}
   - component: {fileID: 264481806134883102}
   - component: {fileID: 6385454276711609320}
+  - component: {fileID: -1751332966175493925}
   m_Layer: 10
   m_Name: Sunflower
   m_TagString: Plant
@@ -29,14 +30,14 @@ RectTransform:
   m_GameObject: {fileID: 1744962629795535462}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 9.951902}
-  m_LocalScale: {x: 2.2, y: 2.2, z: 2.2}
+  m_LocalScale: {x: 2.5, y: 2.5, z: 2.5}
   m_ConstrainProportionsScale: 1
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: 2}
+  m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 1.03125, y: 1.03125}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!212 &1086811956736217689
@@ -189,3 +190,16 @@ BoxCollider2D:
   m_AutoTiling: 0
   m_Size: {x: 33, y: 31}
   m_EdgeRadius: 0
+--- !u!114 &-1751332966175493925
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1744962629795535462}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1bf425823de5c084491dfcf4061a8a02, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  sun: {fileID: 1993174643672892233, guid: 074f084a3412f7a4ea9b9866cc6bd083, type: 3}
