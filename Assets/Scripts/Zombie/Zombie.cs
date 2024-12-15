@@ -74,6 +74,7 @@ namespace Assets.Scripts.Zombie
         {
             animator.SetBool("Attacking", Attacking);
             animator.SetBool("Weak", Hp < MaxHp / 2);
+
             if (Hp == 0)
             {
                 Die();

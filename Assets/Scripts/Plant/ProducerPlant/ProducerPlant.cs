@@ -5,6 +5,7 @@ public abstract class ProducerPlant : Plant
 {
     public Sun sun;
     protected Animator animator;
+
     private float _interval;
     private float _intervalTimer;
 
@@ -21,6 +22,17 @@ public abstract class ProducerPlant : Plant
 
     protected ProducerPlant() : base()
     {
+    }
+
+    protected void Start()
+    {
+        animator = GetComponent<Animator>();
+    }
+
+    protected new void Awake()
+    {
+        base.Awake();
+
         IntervalTimer = Interval;
     }
 
@@ -46,6 +58,7 @@ public abstract class ProducerPlant : Plant
         }
 
         Sun newSun = Instantiate(sun, transform.position, quaternion.identity);
+        newSun.transform.SetParent(transform.parent.parent.parent);
         newSun.Value = 25;
     }
 }

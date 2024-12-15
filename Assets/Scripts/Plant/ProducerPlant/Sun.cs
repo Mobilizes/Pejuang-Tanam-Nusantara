@@ -40,13 +40,13 @@ public class Sun : MonoBehaviour
 
         _dropDirection = new Vector2(Random.Range(-0.5f, 0.5f), -1).normalized;
 
-        _groundY = transform.localPosition.y - 30;
-        _dropSpeed = math.abs((transform.localPosition.y - _groundY) * _dropDirection.y) / _dropTime;
+        _groundY = transform.position.y - 30;
+        _dropSpeed = math.abs((transform.position.y - _groundY) * _dropDirection.y) / _dropTime;
     }
 
     public void Update()
     {
-        if (transform.localPosition.y > _groundY)
+        if (transform.position.y > _groundY)
         {
             transform.Translate(_dropSpeed * Time.deltaTime * _dropDirection);
         }

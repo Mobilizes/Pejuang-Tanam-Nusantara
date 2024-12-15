@@ -6,6 +6,6 @@ public class Sunflower : ProducerPlant
 
         Cost = 50;
         Cooldown = 5;
-        Interval = 5;
+        Interval = 20;
     }
 }
