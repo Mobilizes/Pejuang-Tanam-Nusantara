@@ -2897,10 +2897,20 @@ MonoBehaviour:
     Spawner: 0
     RandomSpawn: 1
     isSpawned: 0
-  - SpawnTime: 2
+  - SpawnTime: 1
     zombieType: 0
     Spawner: 1
-    RandomSpawn: 0
+    RandomSpawn: 1
+    isSpawned: 0
+  - SpawnTime: 2
+    zombieType: 0
+    Spawner: 2
+    RandomSpawn: 1
+    isSpawned: 0
+  - SpawnTime: 3
+    zombieType: 0
+    Spawner: 3
+    RandomSpawn: 1
     isSpawned: 0
 --- !u!224 &2076163498 stripped
 RectTransform:
