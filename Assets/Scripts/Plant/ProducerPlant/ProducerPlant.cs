@@ -4,6 +4,7 @@ using UnityEngine;
 public abstract class ProducerPlant : Plant
 {
     public Sun sun;
+    protected Animator animator;
     private float _interval;
     private float _intervalTimer;
 
