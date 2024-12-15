@@ -35,4 +35,9 @@ public class ObjectContainer : MonoBehaviour
             backgroundImage.enabled = false;
         }
     }
+
+    private void Update()
+    {
+        isFull = transform.childCount > 0;
+    }
 }
