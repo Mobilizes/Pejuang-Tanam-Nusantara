@@ -1,6 +1,5 @@
 using UnityEngine;
 using Assets.Scripts.Zombie;
-using NUnit.Framework;
 using System.Collections.Generic;
 
 public class ZombieSpawner : MonoBehaviour
@@ -18,6 +17,7 @@ public class ZombieSpawner : MonoBehaviour
                 {
                     zombie.Spawner = Random.Range(0, transform.childCount);
                 }
+
                 GameObject zombieInstance = Instantiate(zombiePrefabs[(int)zombie.zombieType], transform.GetChild(zombie.Spawner).transform);
                 transform.GetChild(zombie.Spawner).GetComponent<SpawnPoint>().zombies.Add(zombieInstance);
                 zombie.isSpawned = true;

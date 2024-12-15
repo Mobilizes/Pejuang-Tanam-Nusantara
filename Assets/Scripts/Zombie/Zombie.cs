@@ -38,7 +38,7 @@ namespace Assets.Scripts.Zombie
             set => _atk = math.max(value, 0);
         }
 
-        protected Zombie() : base()
+        protected Zombie(int maxHp) : base(maxHp)
         {
             Timer = Interval;
         }
@@ -47,8 +47,6 @@ namespace Assets.Scripts.Zombie
         {
             if (other.gameObject.CompareTag("Plant"))
             {
-                Debug.Log($"Zombie collided with a plant at lane " + GetLane());
-
                 Attacking = true;
                 target = other.gameObject;
             }
@@ -58,12 +56,11 @@ namespace Assets.Scripts.Zombie
         {
             if (other.gameObject == target || target == null || target.GetComponent<GameEntity>().IsDead())
             {
-                Debug.Log($"Zombie stopped colliding with a plant at lane " + GetLane());
-
                 Attacking = false;
                 target = null;
             }
         }
+
 
         protected void Start()
         {

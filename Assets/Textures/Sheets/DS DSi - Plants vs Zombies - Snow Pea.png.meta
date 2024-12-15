@@ -1,10 +1,10 @@
 fileFormatVersion: 2
-guid: 2375986994010b141941c3663a41aeda
+guid: 64d867d5bd088814496444ef1f827dd6
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: 1526226102420600448
-    second: DS DSi - Plants vs Zombies - Sun_0
+      213: 3118234115812832630
+    second: DS DSi - Plants vs Zombies - Snow Pea_0
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -100,13 +100,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: DS DSi - Plants vs Zombies - Sun_0
+      name: DS DSi - Plants vs Zombies - Snow Pea_0
       rect:
         serializedVersion: 2
         x: 0
         y: 0
-        width: 186
-        height: 96
+        width: 708
+        height: 219
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -115,8 +115,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 08675b9cd8e3e2510800000000000000
-      internalID: 1526226102420600448
+      spriteID: 675378f3861364b20800000000000000
+      internalID: 3118234115812832630
       vertices: []
       indices: 
       edges: []
@@ -134,8 +134,7 @@ TextureImporter:
     secondaryTextures: []
     spriteCustomMetadata:
       entries: []
-    nameFileIdTable:
-      DS DSi - Plants vs Zombies - Sun_0: 1526226102420600448
+    nameFileIdTable: {}
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

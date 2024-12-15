@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 8127554146482925453}
   - component: {fileID: 5363408847335893542}
   - component: {fileID: 7342460147425646420}
-  - component: {fileID: -4491196845317860682}
+  - component: {fileID: -1372307361980179180}
   m_Layer: 10
   m_Name: ObjectPlantGame
   m_TagString: Untagged
@@ -123,7 +123,7 @@ BoxCollider2D:
   m_AutoTiling: 0
   m_Size: {x: 70, y: 80}
   m_EdgeRadius: 0
---- !u!114 &-4491196845317860682
+--- !u!114 &-1372307361980179180
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -132,14 +132,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 390400960188177184}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c003ba27acff8eb4dacf59e7a4f532a6, type: 3}
+  m_Script: {fileID: 11500000, guid: f0b4e0ed0e57aaa40829dee100a3aa19, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Health: 50
+  _maxHp: 100
   bullet: {fileID: 6342120387761691335, guid: f7adfe656c58ee9469cad85c3ebafca5, type: 3}
   zombies: []
   toAttack: {fileID: 0}
-  attackCooldown: 2
-  attackTime: 0
-  DamageValue: 10
-  isAttacking: 0

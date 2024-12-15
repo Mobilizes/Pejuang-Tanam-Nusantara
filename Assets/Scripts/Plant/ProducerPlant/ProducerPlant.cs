@@ -1,7 +1,7 @@
 using Unity.Mathematics;
 using UnityEngine;
 
-public abstract class ProducerPlant : Plant
+public class ProducerPlant : Plant
 {
     public Sun sun;
     protected Animator animator;
@@ -20,20 +20,14 @@ public abstract class ProducerPlant : Plant
         protected set => _intervalTimer = math.clamp(value, 0, Interval);
     }
 
-    protected ProducerPlant() : base()
+    protected ProducerPlant(int maxHp) : base(maxHp)
     {
+        IntervalTimer = Interval;
     }
 
     protected void Start()
     {
         animator = GetComponent<Animator>();
-    }
-
-    protected new void Awake()
-    {
-        base.Awake();
-
-        IntervalTimer = Interval;
     }
 
     protected void Update()
