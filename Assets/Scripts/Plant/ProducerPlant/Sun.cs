@@ -1,10 +1,14 @@
 using System;
 using Unity.Mathematics;
 using UnityEngine;
+using UnityEngine.EventSystems;
+
 using Random = UnityEngine.Random;
 
-public class Sun : MonoBehaviour
+public class Sun : MonoBehaviour, IPointerDownHandler
 {
+    private GameManager _gameManager;
+
     private Vector2 _dropDirection;
     [SerializeField]
     private float _dropTime;
@@ -24,8 +28,15 @@ public class Sun : MonoBehaviour
         Value = value;
     }
 
+    private void Start()
+    {
+        _gameManager = GameManager.instance;
+    }
+
     public void Awake()
     {
+        if (_dropTime == 0) _dropTime = 0.5f;
+
         _dropDirection = new Vector2(Random.Range(-0.5f, 0.5f), -1).normalized;
 
         _groundY = transform.localPosition.y - 30;
@@ -38,5 +49,14 @@ public class Sun : MonoBehaviour
         {
             transform.Translate(_dropSpeed * Time.deltaTime * _dropDirection);
         }
+    }
+
+    public void OnPointerDown(PointerEventData pointerEventData)
+    {
+        if (pointerEventData.button == PointerEventData.InputButton.Left) return;
+
+        Debug.Log("clicked");
+        _gameManager.sunPoints += Value;
+        Destroy(gameObject);
     }
 }
