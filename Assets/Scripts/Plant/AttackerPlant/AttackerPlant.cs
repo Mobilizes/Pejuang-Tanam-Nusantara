@@ -6,7 +6,6 @@ public class AttackerPlant : Plant
 {
     public GameObject bullet;
     public List<GameObject> zombies;
-    public SpawnPoint zombiesSpawnPoint;
 
     private bool _isAttacking;
     [SerializeField]
@@ -48,28 +47,20 @@ public class AttackerPlant : Plant
 
     public void Awake()
     {
-        GameObject spawner = GameObject.Find("Spawner");
-
-        foreach (Transform child in spawner.GetComponentInChildren<Transform>())
-        {
-            zombiesSpawnPoint = child.GetComponent<SpawnPoint>();
-
-            if (zombiesSpawnPoint.row == GetLane()) break;
-        }
     }
 
     public void Update()
     {
-        if ((zombiesSpawnPoint.zombies.Count > 0 || zombies.Count > 0) && _isAttacking == false)
+        if (IsAZombieInLane() && IsAttacking == false)
         {
-            _isAttacking = true;
+            IsAttacking = true;
         }
-        else if ((zombiesSpawnPoint.zombies.Count == 0 || zombies.Count == 0) && _isAttacking == true)
+        else if ((!IsAZombieInLane()) && IsAttacking == true)
         {
-            _isAttacking = false;
+            IsAttacking = false;
         }
 
-        if (_isAttacking)
+        if (IsAttacking)
         {
             
             if (AttackTime <= Time.time)
@@ -92,5 +83,20 @@ public class AttackerPlant : Plant
         {
             Hp -= damage;
         }
+    }
+
+    public bool IsAZombieInLane()
+    {
+        GameObject spawner = GameObject.Find("Spawner");
+
+        foreach (Transform child in spawner.GetComponentInChildren<Transform>())
+        {
+            if (child.GetComponent<SpawnPoint>().row == GetLane())
+            {
+                if (child.GetComponent<SpawnPoint>().zombies.Count > 0) return true;
+            }
+        }
+
+        return false;
     }
 }

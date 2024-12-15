@@ -45,7 +45,7 @@ public class GameEntity : MonoBehaviour
         return Hp == 0;
     }
 
-    protected void Die()
+    protected virtual void Die()
     {
         Destroy(gameObject);
     }

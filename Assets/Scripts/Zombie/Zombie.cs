@@ -14,6 +14,7 @@ namespace Assets.Scripts.Zombie
         private int _atk = 20;
         private float _interval = 1;
         private float _timer;
+        private float _deathTime;
 
         protected float Interval
         {
@@ -61,7 +62,6 @@ namespace Assets.Scripts.Zombie
             }
         }
 
-
         protected void Start()
         {
             animator = GetComponent<Animator>();
@@ -69,14 +69,14 @@ namespace Assets.Scripts.Zombie
 
         protected void Update()
         {
-            animator.SetBool("Attacking", Attacking);
-            animator.SetBool("Weak", Hp < MaxHp / 2);
-
             if (Hp == 0)
             {
                 Die();
                 return;
             }
+
+            animator.SetBool("Attacking", Attacking);
+            animator.SetBool("Weak", Hp < MaxHp / 2);
 
             if (Attacking)
             {
@@ -99,11 +99,15 @@ namespace Assets.Scripts.Zombie
             }
         }
 
-        protected new void Die()
+        protected override void Die()
         {
             animator.SetBool("Dead", true);
+            _deathTime += Time.deltaTime;
 
-            if (animator.GetCurrentAnimatorStateInfo(0).normalizedTime > 5)
+            transform.parent.GetComponent<SpawnPoint>().zombies.Remove(gameObject);
+            transform.GetComponent<Collider2D>().enabled = false;
+
+            if (_deathTime > 7)
             {
                 base.Die();
             }
