@@ -1,9 +1,9 @@
 using Unity.Mathematics;
 using UnityEngine;
 
-[System.Serializable]
 public class GameEntity : MonoBehaviour
 {
+    [SerializeField]
     private int _maxHp;
     private int _hp;
 
@@ -19,12 +19,10 @@ public class GameEntity : MonoBehaviour
         protected set => _hp = math.clamp(value, 0, MaxHp);
     }
 
-    protected GameEntity()
+    protected GameEntity(int maxHp)
     {
-    }
+        MaxHp = maxHp;
 
-    protected void Awake()
-    {
         Hp = MaxHp;
     }
 
@@ -47,7 +45,7 @@ public class GameEntity : MonoBehaviour
         return Hp == 0;
     }
 
-    protected void Die()
+    protected virtual void Die()
     {
         Destroy(gameObject);
     }

@@ -34,7 +34,7 @@ public class ZombieController : MonoBehaviour
         }
         else
         { 
-            collision.gameObject.GetComponent<PlantController>().ReceiveDamage(DamageValue);
+            collision.gameObject.GetComponent<AttackerPlant>().ReceiveDamage(DamageValue);
             yield return new WaitForSeconds(DamageCooldown);
             StartCoroutine(Attack(collision));
         }
