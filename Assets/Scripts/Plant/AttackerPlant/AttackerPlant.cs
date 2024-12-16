@@ -53,8 +53,6 @@ public class AttackerPlant : Plant
 
     public void Update()
     {
-        animator.SetBool("Attacking", IsAttacking);
-
         if (IsAZombieInLane() && IsAttacking == false)
         {
             IsAttacking = true;
@@ -66,9 +64,9 @@ public class AttackerPlant : Plant
 
         if (IsAttacking)
         {
-            
             if (AttackTime <= Time.time)
             {
+                animator.Play("Attacking");
                 GameObject bulletInstance = Instantiate(bullet, transform);
                 bulletInstance.GetComponent<Bullet>().DamageValue = Atk;
                 bulletInstance.transform.localScale /= transform.localScale.x;
