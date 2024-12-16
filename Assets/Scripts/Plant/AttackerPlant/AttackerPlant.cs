@@ -93,9 +93,11 @@ public class AttackerPlant : Plant
 
         foreach (Transform child in spawner.GetComponentInChildren<Transform>())
         {
-            if (child.GetComponent<SpawnPoint>().row == GetLane())
+            SpawnPoint childSpawnPoint = child.GetComponent<SpawnPoint>();
+
+            if (childSpawnPoint.row == GetLane() && childSpawnPoint.zombies.Count > 0)
             {
-                if (child.GetComponent<SpawnPoint>().zombies.Count > 0) return true;
+                return true;
             }
         }
 

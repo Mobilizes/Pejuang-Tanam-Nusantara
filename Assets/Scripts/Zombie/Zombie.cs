@@ -3,18 +3,21 @@ using UnityEngine;
 
 namespace Assets.Scripts.Zombie
 {
-    public class Zombie : GameEntity
+    public class Zombie : GameEntity, ISlowable
     {
         private const float SPEED_MULTIPLIER = 5.0f;
+        private const float SLOW_MULTIPLIER = 0.5f;
+        private const float SLOW_DURATION = 10.0f;
 
         protected Animator animator;
         protected GameObject target;
 
-        protected float _speed = 1;
-        private int _atk = 20;
         private float _interval = 1;
+        private float _speed = 1;
         private float _timer;
+        private float _slowTimer;
         private float _deathTime;
+        private int _atk = 20;
 
         protected float Interval
         {
@@ -26,22 +29,29 @@ namespace Assets.Scripts.Zombie
             get => _speed;
             set => _speed = math.max(value, 0);
         }
+        protected float SlowTimer
+        {
+            get => _slowTimer;
+            private set => _slowTimer = math.clamp(value, 0, SLOW_DURATION);
+        }
         protected float Timer
         {
             get => _timer;
             private set => _timer = math.clamp(value, 0, Interval);
         }
-
         protected bool Attacking { get; set; } = false;
         protected int Atk
         {
             get => _atk;
             set => _atk = math.max(value, 0);
         }
+        protected bool IsSlowed { get; set; }
 
         protected Zombie(int maxHp) : base(maxHp)
         {
             Timer = Interval;
+            SlowTimer = 0;
+            IsSlowed = false;
         }
 
         protected void OnCollisionEnter2D(Collision2D other)
@@ -88,6 +98,12 @@ namespace Assets.Scripts.Zombie
             }
 
             Timer += Time.deltaTime;
+            SlowTimer -= Time.deltaTime;
+
+            if (SlowTimer == 0)
+            {
+                Unslow();
+            }
         }
 
         protected void Attack(GameEntity entity)
@@ -122,6 +138,32 @@ namespace Assets.Scripts.Zombie
         protected new int GetLane()
         {
             return transform.parent.GetComponent<SpawnPoint>().row;
+        }
+
+        public void Slow()
+        {
+            if (!IsSlowed)
+            {
+                Speed *= SLOW_MULTIPLIER;
+            }
+
+            SlowTimer = SLOW_DURATION;
+            IsSlowed = true;
+
+            gameObject.GetComponent<Renderer>().material.color = Color.blue;
+        }
+
+        public void Unslow()
+        {
+            if (IsSlowed)
+            {
+                Speed *= 1 / SLOW_MULTIPLIER;
+            }
+
+            SlowTimer = 0;
+            IsSlowed = false;
+
+            gameObject.GetComponent<Renderer>().material.color = Color.white;
         }
     }
 }
