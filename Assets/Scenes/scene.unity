@@ -3215,26 +3215,47 @@ MonoBehaviour:
   zombiePrefabs:
   - {fileID: 1113420446729341085, guid: 4b0637406f5602e4d91eef0bea9365d7, type: 3}
   zombies:
-  - SpawnTime: 1
-    zombieType: 0
+  - SpawnTime: 60
+    spawnInterval: 7
     Spawner: 0
     RandomSpawn: 1
-    isSpawned: 0
-  - SpawnTime: 1
     zombieType: 0
+    isDone: 0
+    lastSpawnTime: 0
+    nextSpawnTime: 0
+  - SpawnTime: 60
+    spawnInterval: 15
     Spawner: 1
     RandomSpawn: 1
-    isSpawned: 0
-  - SpawnTime: 2
     zombieType: 0
+    isDone: 0
+    lastSpawnTime: 0
+    nextSpawnTime: 0
+  - SpawnTime: 60
+    spawnInterval: 8
     Spawner: 2
     RandomSpawn: 1
-    isSpawned: 0
-  - SpawnTime: 3
     zombieType: 0
+    isDone: 0
+    lastSpawnTime: 0
+    nextSpawnTime: 0
+  - SpawnTime: 60
+    spawnInterval: 9
     Spawner: 3
     RandomSpawn: 1
-    isSpawned: 0
+    zombieType: 0
+    isDone: 0
+    lastSpawnTime: 0
+    nextSpawnTime: 0
+  - SpawnTime: 60
+    spawnInterval: 5
+    Spawner: 4
+    RandomSpawn: 1
+    zombieType: 0
+    isDone: 0
+    lastSpawnTime: 0
+    nextSpawnTime: 0
+  maxSpawnTime: 60
 --- !u!1001 &2064528628
 PrefabInstance:
   m_ObjectHideFlags: 0
