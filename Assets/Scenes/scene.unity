@@ -3214,12 +3214,13 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   zombiePrefabs:
   - {fileID: 1113420446729341085, guid: 4b0637406f5602e4d91eef0bea9365d7, type: 3}
+  - {fileID: 1113420446729341085, guid: 3625d0dde6234624fbb06a8894188930, type: 3}
   zombies:
   - SpawnTime: 60
     spawnInterval: 7
     Spawner: 0
     RandomSpawn: 1
-    zombieType: 0
+    zombieType: 1
     isDone: 0
     lastSpawnTime: 0
     nextSpawnTime: 0

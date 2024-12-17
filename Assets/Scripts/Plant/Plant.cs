@@ -1,6 +1,7 @@
 using Unity.Mathematics;
+using UnityEngine;
 
-public abstract class Plant : GameEntity
+public class Plant : GameEntity
 {
     private uint _cost;
     private float _cooldown;
@@ -25,5 +26,10 @@ public abstract class Plant : GameEntity
     protected Plant(int maxHp) : base(maxHp)
     {
         CooldownTimer = Cooldown;
+    }
+
+    protected override void Die()
+    {
+        Destroy(gameObject);
     }
 }
