@@ -85,8 +85,23 @@ namespace Assets.Scripts.Zombie
                 return;
             }
 
+            if (Attacking)
+            {
+                animator.Play("Eat");
+            }
+
+            if (IsLow())
+            {
+                animator.Play("Walk_Weak");
+            }
+
+            if (IsLow() && Attacking)
+            {
+                animator.Play("Eat_Weak");
+            }
+
             animator.SetBool("Attacking", Attacking);
-            animator.SetBool("Weak", Hp < MaxHp / 2);
+            animator.SetBool("Weak", IsLow());
 
             if (Attacking)
             {
@@ -104,40 +119,6 @@ namespace Assets.Scripts.Zombie
             {
                 Unslow();
             }
-        }
-
-        protected void Attack(GameEntity entity)
-        {
-            if (Timer == Interval)
-            {
-                entity.TakeDamage(Atk);
-                Timer = 0;
-            }
-        }
-
-        protected override void Die()
-        {
-            animator.SetBool("Dead", true);
-            _deathTime += Time.deltaTime;
-
-            transform.parent.GetComponent<SpawnPoint>().zombies.Remove(gameObject);
-            transform.GetComponent<Collider2D>().enabled = false;
-
-            if (_deathTime > 7)
-            {
-                base.Die();
-            }
-        }
-
-        protected void Move()
-        {
-            transform.position += SPEED_MULTIPLIER * Speed *
-                                  Time.deltaTime * Vector3.left;
-        }
-
-        protected new int GetLane()
-        {
-            return transform.parent.GetComponent<SpawnPoint>().row;
         }
 
         public void Slow()
@@ -164,6 +145,46 @@ namespace Assets.Scripts.Zombie
             IsSlowed = false;
 
             gameObject.GetComponent<Renderer>().material.color = Color.white;
+        }
+
+        protected void Attack(GameEntity entity)
+        {
+            if (Timer == Interval)
+            {
+                entity.TakeDamage(Atk);
+                Timer = 0;
+            }
+        }
+
+        protected override void Die()
+        {
+            animator.Play("Dead");
+            animator.SetBool("Dead", true);
+            _deathTime += Time.deltaTime;
+
+            transform.parent.GetComponent<SpawnPoint>().zombies.Remove(gameObject);
+            transform.GetComponent<Collider2D>().enabled = false;
+
+            if (_deathTime > 7)
+            {
+                base.Die();
+            }
+        }
+
+        protected void Move()
+        {
+            transform.position += SPEED_MULTIPLIER * Speed *
+                                  Time.deltaTime * Vector3.left;
+        }
+
+        protected new int GetLane()
+        {
+            return transform.parent.GetComponent<SpawnPoint>().row;
+        }
+
+        protected bool IsLow()
+        {
+            return Hp <= MaxHp / 2;
         }
     }
 }
