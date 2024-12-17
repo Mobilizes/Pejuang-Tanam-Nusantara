@@ -54,11 +54,13 @@ namespace Assets.Scripts.Zombie
             set => _armor = math.max(value, 0);
         }
 
-        protected Zombie(int maxHp) : base(maxHp, true)
+        protected Zombie(int maxHp, int armor) : base(maxHp, armor > 0)
         {
             Timer = Interval;
             SlowTimer = 0;
             IsSlowed = false;
+
+            Armor = armor;
         }
 
         protected void OnCollisionEnter2D(Collision2D other)
