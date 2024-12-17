@@ -48,16 +48,7 @@ public class ZombieSpawner : MonoBehaviour
 
     private void SpawnZombie(Spawning_Zombies zombie)
     {
-        int spawnerIndex = zombie.RandomSpawn
-            ? Random.Range(0, transform.childCount)
-            : zombie.Spawner;
-
-        GameObject zombieInstance = Instantiate(
-            zombiePrefabs[(int)zombie.zombieType],
-            transform.GetChild(spawnerIndex).position,
-            Quaternion.identity
-        );
-
-        transform.GetChild(spawnerIndex).GetComponent<SpawnPoint>().zombies.Add(zombieInstance);
+        GameObject zombieInstance = Instantiate(zombiePrefabs[(int)zombie.zombieType], transform.GetChild(zombie.Spawner).transform);
+        transform.GetChild(zombie.Spawner).GetComponent<SpawnPoint>().zombies.Add(zombieInstance);
     }
 }
