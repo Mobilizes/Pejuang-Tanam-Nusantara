@@ -9,6 +9,7 @@ namespace Assets.Scripts.Zombie
         {
             Speed = 5;
             Atk = 20;
+            Armor = 0;
         }
     }
 }

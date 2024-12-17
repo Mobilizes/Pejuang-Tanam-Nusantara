@@ -18,6 +18,7 @@ namespace Assets.Scripts.Zombie
         private float _slowTimer;
         private float _deathTime;
         private int _atk = 20;
+        private int _armor;
 
         protected float Interval
         {
@@ -47,7 +48,13 @@ namespace Assets.Scripts.Zombie
         }
         protected bool IsSlowed { get; set; }
 
-        protected Zombie(int maxHp) : base(maxHp)
+        protected int Armor
+        {
+            get => _armor;
+            set => _armor = math.max(value, 0);
+        }
+
+        protected Zombie(int maxHp) : base(maxHp, true)
         {
             Timer = Interval;
             SlowTimer = 0;
@@ -129,6 +136,16 @@ namespace Assets.Scripts.Zombie
             }
         }
 
+        protected override void TakeArmorDamage(int damage)
+        {
+
+            if (this._armor < 0)
+            {
+                Debug.Log("Armor hancur");
+                base.hasArmor = false;
+            }
+            else this._armor -= damage;
+        }
         protected void Move()
         {
             transform.position += SPEED_MULTIPLIER * Speed *

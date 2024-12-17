@@ -1,4 +1,5 @@
 using Unity.Mathematics;
+using UnityEditor.Compilation;
 using UnityEngine;
 
 public class GameEntity : MonoBehaviour
@@ -6,7 +7,7 @@ public class GameEntity : MonoBehaviour
     [SerializeField]
     private int _maxHp;
     private int _hp;
-
+    private bool _hasArmor;
     public int MaxHp
     {
         get => _maxHp;
@@ -19,11 +20,18 @@ public class GameEntity : MonoBehaviour
         protected set => _hp = math.clamp(value, 0, MaxHp);
     }
 
-    protected GameEntity(int maxHp)
+    public bool hasArmor
+    {
+        get => _hasArmor;
+        protected set => _hasArmor = value;
+    }
+    protected GameEntity(int maxHp, bool hasArmor)
     {
         MaxHp = maxHp;
 
         Hp = MaxHp;
+
+        this.hasArmor = hasArmor;
     }
 
     public void TakeDamage(int damage)
@@ -32,12 +40,19 @@ public class GameEntity : MonoBehaviour
         {
             throw new System.ArgumentException("Damage cannot be negative");
         }
-
-        Hp -= damage;
-        if (Hp == 0)
+        if (hasArmor)
         {
-            Die();
+            TakeArmorDamage(damage);
         }
+        else
+        {
+            Hp -= damage;
+            if (Hp == 0)
+            {
+                Die();
+            }
+        }
+        
     }
 
     public bool IsDead()
@@ -45,6 +60,14 @@ public class GameEntity : MonoBehaviour
         return Hp == 0;
     }
 
+    protected virtual void TakeArmorDamage(int damage)
+    {
+        Hp -= damage;
+        if (Hp == 0)
+        {
+            Die();
+        }
+    }
     protected virtual void Die()
     {
         Destroy(gameObject);
