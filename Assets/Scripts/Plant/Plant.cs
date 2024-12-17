@@ -3,6 +3,7 @@ using UnityEngine;
 
 public class Plant : GameEntity
 {
+    [SerializeField]
     private uint _cost;
     private float _cooldown;
     private float _cooldownTimer;

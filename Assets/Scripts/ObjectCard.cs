@@ -16,6 +16,8 @@ public class ObjectCard : MonoBehaviour, IDragHandler, IPointerDownHandler, IPoi
     }
     public void OnDrag(PointerEventData eventData)
     {
+        if (objectDragInstance == null) return;
+
         if (eventData.button != PointerEventData.InputButton.Left) return;
 
         objectDragInstance.transform.position = Input.mousePosition;
@@ -24,6 +26,8 @@ public class ObjectCard : MonoBehaviour, IDragHandler, IPointerDownHandler, IPoi
     public void OnPointerDown(PointerEventData eventData)
     {
         if (eventData.button != PointerEventData.InputButton.Left) return;
+
+        if (gameManager.sunPoints < object_Game.GetComponent<Plant>().Cost) return;
 
         objectDragInstance = Instantiate(object_Drag, canvas.transform);
         objectDragInstance.transform.position = Input.mousePosition;
@@ -34,7 +38,16 @@ public class ObjectCard : MonoBehaviour, IDragHandler, IPointerDownHandler, IPoi
 
     public void OnPointerUp(PointerEventData eventData)
     {
+        if (gameManager.draggingObject == null) return;
+
         if (eventData.button != PointerEventData.InputButton.Left) return;
+
+        if (gameManager.sunPoints < object_Game.GetComponent<Plant>().Cost)
+        {
+            Destroy(objectDragInstance);
+            gameManager.draggingObject = null;
+            return;
+        }
 
         gameManager.PlaceObject();
         gameManager.draggingObject = null;
