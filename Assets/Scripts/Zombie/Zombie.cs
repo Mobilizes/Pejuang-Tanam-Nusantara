@@ -158,6 +158,11 @@ namespace Assets.Scripts.Zombie
 
         protected override void Die()
         {
+            if (!animator.GetBool("Dead"))
+            {
+                transform.position += Vector3.left * 30;
+            }
+
             animator.Play("Dead");
             animator.SetBool("Dead", true);
             _deathTime += Time.deltaTime;
