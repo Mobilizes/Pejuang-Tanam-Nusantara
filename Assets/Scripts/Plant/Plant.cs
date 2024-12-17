@@ -23,7 +23,7 @@ public class Plant : GameEntity
         protected set => _cooldownTimer = math.clamp(value, 0, Cooldown);
     }
 
-    protected Plant(int maxHp) : base(maxHp)
+    protected Plant(int maxHp) : base(maxHp, false)
     {
         CooldownTimer = Cooldown;
     }

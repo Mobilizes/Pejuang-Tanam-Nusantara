@@ -3216,43 +3216,51 @@ MonoBehaviour:
   - {fileID: 1113420446729341085, guid: 4b0637406f5602e4d91eef0bea9365d7, type: 3}
   - {fileID: 1113420446729341085, guid: 3625d0dde6234624fbb06a8894188930, type: 3}
   zombies:
-  - SpawnTime: 60
-    spawnInterval: 7
+  - SpawnTime: 20
+    spawnInterval: 15
     Spawner: 0
     RandomSpawn: 1
     zombieType: 1
     isDone: 0
     lastSpawnTime: 0
     nextSpawnTime: 0
-  - SpawnTime: 60
-    spawnInterval: 15
+  - SpawnTime: 5
+    spawnInterval: 25
     Spawner: 1
     RandomSpawn: 1
     zombieType: 0
     isDone: 0
     lastSpawnTime: 0
     nextSpawnTime: 0
-  - SpawnTime: 60
-    spawnInterval: 8
+  - SpawnTime: 15
+    spawnInterval: 15
     Spawner: 2
     RandomSpawn: 1
     zombieType: 0
     isDone: 0
     lastSpawnTime: 0
     nextSpawnTime: 0
-  - SpawnTime: 60
-    spawnInterval: 9
+  - SpawnTime: 10
+    spawnInterval: 20
     Spawner: 3
     RandomSpawn: 1
     zombieType: 0
     isDone: 0
     lastSpawnTime: 0
     nextSpawnTime: 0
-  - SpawnTime: 60
-    spawnInterval: 5
+  - SpawnTime: 10
+    spawnInterval: 10
     Spawner: 4
     RandomSpawn: 1
     zombieType: 0
+    isDone: 0
+    lastSpawnTime: 0
+    nextSpawnTime: 0
+  - SpawnTime: 10
+    spawnInterval: 20
+    Spawner: 4
+    RandomSpawn: 1
+    zombieType: 1
     isDone: 0
     lastSpawnTime: 0
     nextSpawnTime: 0

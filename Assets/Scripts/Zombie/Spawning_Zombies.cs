@@ -19,6 +19,6 @@ public class Spawning_Zombies
 public enum ZombieType
 {
     BasicZombie,
-    ConeZombie,
+    ConeheadZombie,
     BucketZombie
 }
