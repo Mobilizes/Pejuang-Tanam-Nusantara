@@ -175,7 +175,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _maxHp: 100
-  _cost: 100
+  _cost: 175
   animator: {fileID: 0}
   bullet: {fileID: 6342120387761691335, guid: ca3c67bac4cfe1348a0ec3ec77e45c04, type: 3}
   zombies: []

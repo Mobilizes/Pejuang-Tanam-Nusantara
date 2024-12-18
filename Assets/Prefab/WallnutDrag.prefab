@@ -15,7 +15,7 @@ GameObject:
   - component: {fileID: -6479278239746569980}
   - component: {fileID: 1739242328647558851}
   m_Layer: 5
-  m_Name: SpicyPeaDrag
+  m_Name: WallnutDrag
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -61,14 +61,14 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0.93333334, g: 0.1882353, b: 0.1882353, a: 1}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 4723107735738678597, guid: 6fc2b8d4eb80ffa49a0f97f9cd881aa2, type: 3}
+  m_Sprite: {fileID: 4723107735738678597, guid: 7b522b02c775daf42b2a1d1fc542d8db, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
