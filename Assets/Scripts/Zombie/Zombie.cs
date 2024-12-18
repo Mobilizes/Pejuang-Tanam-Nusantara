@@ -3,20 +3,24 @@ using UnityEngine;
 
 namespace Assets.Scripts.Zombie
 {
-    public class Zombie : GameEntity, ISlowable
+    public class Zombie : GameEntity, ISlowable, IBurnable
     {
         private const float SPEED_MULTIPLIER = 5.0f;
         private const float SLOW_MULTIPLIER = 0.5f;
         private const float SLOW_DURATION = 10.0f;
+        private const float BURN_DURATION = 5.0f;
+        private const int BURN_DAMAGE = 20;
 
         protected Animator animator;
         protected GameObject target;
 
+        private float _burnDamageTimer;
+        private float _burnTimer;
+        private float _deathTimer;
         private float _interval = 1;
         private float _speed = 1;
-        private float _timer;
         private float _slowTimer;
-        private float _deathTime;
+        private float _timer;
         private int _atk = 20;
         private int _armor;
 
@@ -29,6 +33,11 @@ namespace Assets.Scripts.Zombie
         {
             get => _speed;
             set => _speed = math.max(value, 0);
+        }
+        protected float BurnTimer
+        {
+            get => _burnTimer;
+            private set => _burnTimer = math.clamp(value, 0, BURN_DURATION);
         }
         protected float SlowTimer
         {
@@ -46,7 +55,8 @@ namespace Assets.Scripts.Zombie
             get => _atk;
             set => _atk = math.max(value, 0);
         }
-        protected bool IsSlowed { get; set; }
+        protected bool IsSlow { get; set; }
+        protected bool IsBurn { get; set; }
 
         protected int Armor
         {
@@ -58,7 +68,7 @@ namespace Assets.Scripts.Zombie
         {
             Timer = Interval;
             SlowTimer = 0;
-            IsSlowed = false;
+            IsSlow = false;
 
             Armor = armor;
         }
@@ -122,38 +132,69 @@ namespace Assets.Scripts.Zombie
             }
 
             Timer += Time.deltaTime;
+            BurnTimer -= Time.deltaTime;
             SlowTimer -= Time.deltaTime;
 
-            if (SlowTimer == 0)
+            if (IsBurn)
             {
-                Unslow();
+                _burnDamageTimer += Time.deltaTime;
+                TakeBurningDamage();
+
+                if (BurnTimer == 0)
+                {
+                    _burnDamageTimer = 0;
+                    Unburn();
+                }
             }
+
+            if (IsSlow)
+            {
+                if (SlowTimer == 0)
+                {
+                    Unslow();
+                }
+            }
+
+            Color zombieColor = Color.white;
+
+            if (IsSlow) zombieColor += Color.blue;
+            if (IsBurn) zombieColor += Color.red;
+
+            gameObject.GetComponent<Renderer>().material.color = zombieColor;
         }
 
         public void Slow()
         {
-            if (!IsSlowed)
+            if (!IsSlow)
             {
                 Speed *= SLOW_MULTIPLIER;
             }
 
             SlowTimer = SLOW_DURATION;
-            IsSlowed = true;
-
-            gameObject.GetComponent<Renderer>().material.color = Color.blue;
+            IsSlow = true;
         }
 
         public void Unslow()
         {
-            if (IsSlowed)
+            if (IsSlow)
             {
                 Speed *= 1 / SLOW_MULTIPLIER;
             }
 
             SlowTimer = 0;
-            IsSlowed = false;
+            IsSlow = false;
+        }
 
-            gameObject.GetComponent<Renderer>().material.color = Color.white;
+        public void Burn()
+        {
+            BurnTimer = BURN_DURATION;
+            IsBurn = true;
+        }
+
+        public void Unburn()
+        {
+            BurnTimer = 0;
+            IsBurn = false;
         }
 
         protected void Attack(GameEntity entity)
@@ -174,12 +215,12 @@ namespace Assets.Scripts.Zombie
 
             animator.Play("Dead");
             animator.SetBool("Dead", true);
-            _deathTime += Time.deltaTime;
+            _deathTimer += Time.deltaTime;
 
             transform.parent.GetComponent<SpawnPoint>().zombies.Remove(gameObject);
             transform.GetComponent<Collider2D>().enabled = false;
 
-            if (_deathTime > 7)
+            if (_deathTimer > 7)
             {
                 base.Die();
             }
@@ -209,6 +250,18 @@ namespace Assets.Scripts.Zombie
         protected bool IsLow()
         {
             return Hp <= MaxHp / 2;
+        }
+
+        private void TakeBurningDamage()
+        {
+            if (!IsBurn) return;
+
+            if (_burnDamageTimer >= 1)
+            {
+                Debug.Log($"Burn! HP : {Hp}");
+                TakeDamage(BURN_DAMAGE);
+                _burnDamageTimer = 0;
+            }
         }
     }
 }

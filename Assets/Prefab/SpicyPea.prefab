@@ -12,9 +12,9 @@ GameObject:
   - component: {fileID: 8225479858087313764}
   - component: {fileID: 3728548938561399020}
   - component: {fileID: 6710282239483345194}
-  - component: {fileID: 2288756066178760945}
+  - component: {fileID: -6355276138079340281}
   m_Layer: 10
-  m_Name: Wallnut
+  m_Name: SpicyPea
   m_TagString: Plant
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -83,12 +83,12 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 1
-  m_Sprite: {fileID: 4723107735738678597, guid: 7b522b02c775daf42b2a1d1fc542d8db, type: 3}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Sprite: {fileID: 4723107735738678597, guid: 6fc2b8d4eb80ffa49a0f97f9cd881aa2, type: 3}
+  m_Color: {r: 0.93333334, g: 0.1882353, b: 0.1882353, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
-  m_Size: {x: 0.3, y: 0.32}
+  m_Size: {x: 0.9375, y: 1}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
@@ -104,7 +104,7 @@ Animator:
   m_GameObject: {fileID: 3010180291132066288}
   m_Enabled: 1
   m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: be9704f15a373c7448d214588a122d83, type: 2}
+  m_Controller: {fileID: 9100000, guid: 622c6c4337a65b844b85569cb6ba020b, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
   m_ApplyRootMotion: 0
@@ -154,15 +154,15 @@ BoxCollider2D:
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 28, y: 32}
-    newSize: {x: 0.3, y: 0.32}
+    oldSize: {x: 32, y: 32}
+    newSize: {x: 0.9375, y: 1}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
     adaptiveTiling: 0
   m_AutoTiling: 0
   m_Size: {x: 32, y: 32}
   m_EdgeRadius: 0
---- !u!114 &2288756066178760945
+--- !u!114 &-6355276138079340281
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -171,8 +171,13 @@ MonoBehaviour:
   m_GameObject: {fileID: 3010180291132066288}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d32f13dc70837d1478eb4117dbaa0101, type: 3}
+  m_Script: {fileID: 11500000, guid: dcf32e8604b811d4ba0489c197c31353, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   _maxHp: 100
-  _cost: 50
+  _cost: 175
+  animator: {fileID: 0}
+  bullet: {fileID: 6342120387761691335, guid: ca3c67bac4cfe1348a0ec3ec77e45c04, type: 3}
+  zombies: []
+  _attackInterval: 2
+  _atk: 0
