@@ -109,12 +109,12 @@ namespace Assets.Scripts.Zombie
                 animator.Play("Eat");
             }
 
-            if (IsLow())
+            else if (IsLow())
             {
                 animator.Play("Walk_Weak");
             }
 
-            if (IsLow() && Attacking)
+            else if (IsLow() && Attacking)
             {
                 animator.Play("Eat_Weak");
             }
