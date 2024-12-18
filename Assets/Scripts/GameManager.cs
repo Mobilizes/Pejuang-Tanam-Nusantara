@@ -14,10 +14,13 @@ public class GameManager : MonoBehaviour
     }
     public void PlaceObject()
     {
-        if (draggingObject != null && currentContainer != null)
+        Plant plant = draggingObject.GetComponent<ObjectDragging>().card.object_Game.GetComponent<Plant>();
+
+        if (draggingObject != null && currentContainer != null && sunPoints >= plant.Cost)
         {
+            sunPoints -= plant.Cost;
+
             GameObject objectGame = Instantiate(draggingObject.GetComponent<ObjectDragging>().card.object_Game, currentContainer.transform);
-            objectGame.GetComponent<AttackerPlant>().zombies = currentContainer.GetComponent<ObjectContainer>().spawnPoint.zombies;
             currentContainer.GetComponent<ObjectContainer>().isFull = true;
         }
     }   

@@ -1,7 +1,9 @@
 using Unity.Mathematics;
+using UnityEngine;
 
-public abstract class Plant : GameEntity
+public class Plant : GameEntity
 {
+    [SerializeField]
     private uint _cost;
     private float _cooldown;
     private float _cooldownTimer;
@@ -25,5 +27,10 @@ public abstract class Plant : GameEntity
     protected Plant(int maxHp) : base(maxHp, false)
     {
         CooldownTimer = Cooldown;
+    }
+
+    protected override void Die()
+    {
+        Destroy(gameObject);
     }
 }

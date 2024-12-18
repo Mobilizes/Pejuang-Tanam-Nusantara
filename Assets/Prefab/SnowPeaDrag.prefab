@@ -15,7 +15,7 @@ GameObject:
   - component: {fileID: -6479278239746569980}
   - component: {fileID: 1739242328647558851}
   m_Layer: 5
-  m_Name: ObjectPlantDrag
+  m_Name: SnowPeaDrag
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -68,7 +68,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 4723107735738678597, guid: 86e58659822ee484ab22e4a5814161a1, type: 3}
+  m_Sprite: {fileID: 4723107735738678597, guid: bdcf022ce45c0444dbf9888c4d92b978, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1

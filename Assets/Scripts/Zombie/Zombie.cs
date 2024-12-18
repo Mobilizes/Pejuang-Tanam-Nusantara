@@ -54,11 +54,13 @@ namespace Assets.Scripts.Zombie
             set => _armor = math.max(value, 0);
         }
 
-        protected Zombie(int maxHp) : base(maxHp, true)
+        protected Zombie(int maxHp, int armor) : base(maxHp, armor > 0)
         {
             Timer = Interval;
             SlowTimer = 0;
             IsSlowed = false;
+
+            Armor = armor;
         }
 
         protected void OnCollisionEnter2D(Collision2D other)
@@ -92,8 +94,23 @@ namespace Assets.Scripts.Zombie
                 return;
             }
 
+            if (Attacking)
+            {
+                animator.Play("Eat");
+            }
+
+            if (IsLow())
+            {
+                animator.Play("Walk_Weak");
+            }
+
+            if (IsLow() && Attacking)
+            {
+                animator.Play("Eat_Weak");
+            }
+
             animator.SetBool("Attacking", Attacking);
-            animator.SetBool("Weak", Hp < MaxHp / 2);
+            animator.SetBool("Weak", IsLow());
 
             if (Attacking)
             {
@@ -113,6 +130,32 @@ namespace Assets.Scripts.Zombie
             }
         }
 
+        public void Slow()
+        {
+            if (!IsSlowed)
+            {
+                Speed *= SLOW_MULTIPLIER;
+            }
+
+            SlowTimer = SLOW_DURATION;
+            IsSlowed = true;
+
+            gameObject.GetComponent<Renderer>().material.color = Color.blue;
+        }
+
+        public void Unslow()
+        {
+            if (IsSlowed)
+            {
+                Speed *= 1 / SLOW_MULTIPLIER;
+            }
+
+            SlowTimer = 0;
+            IsSlowed = false;
+
+            gameObject.GetComponent<Renderer>().material.color = Color.white;
+        }
+
         protected void Attack(GameEntity entity)
         {
             if (Timer == Interval)
@@ -124,6 +167,12 @@ namespace Assets.Scripts.Zombie
 
         protected override void Die()
         {
+            if (!animator.GetBool("Dead"))
+            {
+                transform.position += Vector3.left * 30;
+            }
+
+            animator.Play("Dead");
             animator.SetBool("Dead", true);
             _deathTime += Time.deltaTime;
 
@@ -157,30 +206,9 @@ namespace Assets.Scripts.Zombie
             return transform.parent.GetComponent<SpawnPoint>().row;
         }
 
-        public void Slow()
+        protected bool IsLow()
         {
-            if (!IsSlowed)
-            {
-                Speed *= SLOW_MULTIPLIER;
-            }
-
-            SlowTimer = SLOW_DURATION;
-            IsSlowed = true;
-
-            gameObject.GetComponent<Renderer>().material.color = Color.blue;
-        }
-
-        public void Unslow()
-        {
-            if (IsSlowed)
-            {
-                Speed *= 1 / SLOW_MULTIPLIER;
-            }
-
-            SlowTimer = 0;
-            IsSlowed = false;
-
-            gameObject.GetComponent<Renderer>().material.color = Color.white;
+            return Hp <= MaxHp / 2;
         }
     }
 }

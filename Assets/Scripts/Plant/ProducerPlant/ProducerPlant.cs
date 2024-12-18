@@ -20,8 +20,9 @@ public class ProducerPlant : Plant
         protected set => _intervalTimer = math.clamp(value, 0, Interval);
     }
 
-    protected ProducerPlant(int maxHp) : base(maxHp)
+    protected ProducerPlant(int maxHp, int interval) : base(maxHp)
     {
+        Interval = interval;
         IntervalTimer = Interval;
     }
 
