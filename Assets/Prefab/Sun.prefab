@@ -108,7 +108,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   gameManager: {fileID: 0}
   _dropTime: 0.5
-  _lifetime: 10
+  _expiration: 10
   _value: 25
 --- !u!222 &-654416545947505634
 CanvasRenderer:

@@ -21,6 +21,22 @@ public class Sun : MonoBehaviour, IPointerDownHandler
     [SerializeField]
     private uint _value;
 
+    public float DropTime
+    {
+        get => _dropTime;
+        set
+        {
+            _dropTime = math.max(value, 0.5f);
+            _dropSpeed = math.abs((transform.position.y - _groundY) * _dropDirection.y) / _dropTime;
+        }
+    }
+
+    public float GroundY
+    {
+        get => _groundY;
+        set => _groundY = value;
+    }
+
     public float Expiration
     {
         get => _expiration;
@@ -51,8 +67,6 @@ public class Sun : MonoBehaviour, IPointerDownHandler
 
     public void Awake()
     {
-        if (_dropTime == 0) _dropTime = 0.5f;
-
         _dropDirection = new Vector2(Random.Range(-0.5f, 0.5f), -1).normalized;
 
         _groundY = transform.position.y - 30;
